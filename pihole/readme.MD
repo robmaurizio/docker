@@ -1,4 +1,4 @@
-## pihole
+# pihole
 Sets up a pihole container to block ads
  
 --Setting Up--
