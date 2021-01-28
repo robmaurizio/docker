@@ -4,7 +4,7 @@ Scripts for Docker containers
 ## pihole
 Sets up a pihole container to block ads
  
- --Setting Up--
+ ####Setting Up####
 
 1. Download the latest version: docker pull pihole/pihole
 2. Remove the current container: docker rm -f pihole
