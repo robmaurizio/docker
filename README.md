@@ -1,7 +1,7 @@
 # docker
 Scripts for Docker containers
 
-# Pihole
+## pihole
 Sets up a pihole container to block ads
  
  --Setting Up--
