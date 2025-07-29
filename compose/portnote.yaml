@@ -1,0 +1,38 @@
+services:
+  web:
+    image: haedlessdev/portnote:latest
+    ports:
+      - "3000:3000"
+    environment:
+      JWT_SECRET: Occupy@Steadily5@Making # Replace with a secure random string
+      USER_SECRET: Blooper@Trash7@Ripping # Replace with a secure random string
+      LOGIN_USERNAME: robert # Replace with a username
+      LOGIN_PASSWORD: Discharge@Docile7@Credible # Replace with a custom password
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/postgres"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+  agent:
+    image: haedlessdev/portnote-agent:latest
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/postgres"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:17
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+volumes:
+  postgres_data:

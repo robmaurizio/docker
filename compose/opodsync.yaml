@@ -1,0 +1,14 @@
+services:
+  gpodder:
+    container_name: opodsync
+    image: ganeshlab/opodsync:latest
+    volumes:
+      - gpodder_data:/var/www/server/data
+    hostname: opodsync.localhost
+    ports:
+      - 32610:8080
+    restart: always
+
+volumes:
+  gpodder_data:
+    driver: local

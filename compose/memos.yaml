@@ -1,0 +1,17 @@
+services:
+  memos:
+    image: neosmemo/memos:stable
+    container_name: memos
+    restart: always
+    environment:
+      - TZ=America/Chicago
+    volumes:
+      - type: volume
+        source: 0e86521db3713922f36628d849fe28ab31fa2b2ab57ec6c5fca5436a3f6f4ac1
+        target: /var/opt/memos
+    ports:
+      - 5230:5230
+
+volumes:
+  0e86521db3713922f36628d849fe28ab31fa2b2ab57ec6c5fca5436a3f6f4ac1:
+    external: true
